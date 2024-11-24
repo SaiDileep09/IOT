@@ -1,0 +1,120 @@
+Experiment 1
+
+Aim: Familiarization with Arduino/Raspberry Pi and performing necessary software installation.
+Arduino Installation Steps:
+
+Step 1: Download Arduino IDE:
+o Visit the official website: https://www.arduino.cc.
+o Download the appropriate version for your operating system.
+Step 2: Launch the Arduino IDE:
+o Once the download is complete, unzip the folder if it's in a compressed format.
+Step 3: Open the Application:
+o Locate the application icon inside the extracted folder.
+o Look for the icon labeled with the infinity symbol (application.exe for Windows).
+o Double-click the icon to launch the Arduino IDE.
+Step 4: Open an Existing Project Example
+• Once the Arduino IDE software starts, you will have two options:
+• Create a New Project
+• Open an Existing Project Example
+• To create a new project
+• Select File → New from the top menu.
+• To open an existing project example:
+• Select File → Examples → Basics → Blink.
+Here, we are selecting one of the examples named "Blink." This example turns the LED on and off with a
+time delay.
+You can select any other example from the list based on your preference.
+Step 5: Select Your Arduino Board
+To avoid any errors while uploading your program to the board, you must select the correct Arduino board
+that matches the one connected to your computer.
+• Go to Tools → Board and select your board.
+• In this example, we selected the Arduino Uno board according to our tutorial, but you should select
+the board that matches the one you're using.
+Step 6: Select Your Serial Port
+Select the serial device for your Arduino board.
+• Go to Tools → Serial Port.
+• This is likely to be COM3 or higher (COM1 and COM2 are usually reserved for hardware serial
+ports).
+• To find out which serial port corresponds to your board, you can disconnect the Arduino board,
+reopen the menu, and see which entry disappears.
+• Reconnect the board and select the correct serial port.
+Before uploading your program to the board, it's important to familiarize yourself with the Arduino IDE
+toolbar symbols
+Step 7: Upload the Program to Your Board
+• A: Used to check for any compilation errors.
+• B: Used to upload a program to the Arduino board.
+• C: Shortcut to create a new sketch.
+• D: Used to directly open one of the example sketches.
+• E: Used to save your sketch.
+• F: Serial Monitor, used to receive serial data from the board and send data to the board.
+Now, simply click the Upload button in the environment. Wait a few seconds, and you will see the RX
+and TX LEDs on the board flashing. If the upload is successful, the message "Done uploading" will
+appear in the status bar.
+
+Raspberry Pi Installation
+-------------------------
+Required Items:
+• Raspberry Pi (either Model B or Model B+)
+• SD Card (recommended: 8GB class 4)
+• Display and Connecting Cables
+o Any HDMI/DVI monitor or TV will work.
+o For best results, use one with HDMI input, but other connections are available for older
+devices.
+• Keyboard and Mouse (any standard USB keyboard and mouse will work)
+• Power Supply (5V micro USB power supply)
+• Internet Connection (optional, for updates or software downloads)
+• Sound (headphones, earphones, or speakers with a 3.5mm jack)
+
+Plugging in Your Raspberry Pi
+1. Insert the SD card into the SD card slot on the Raspberry Pi (it will only fit one way).
+2. Plug in your USB keyboard and mouse into the USB slots on the Raspberry Pi.
+3. Ensure that your monitor or TV is turned on and the correct input (e.g., HDMI 1, DVI) is selected.
+4. If you want to connect to the internet, plug an Ethernet cable into the Ethernet port next to the USB
+ports. If no internet is needed, you can skip this step.
+5. After confirming that all cables and the SD card are properly connected, plug in the micro USB
+power supply to turn on and boot your Raspberry Pi.
+6. If this is your first time using the Raspberry Pi SD card, you will need to select an operating system
+and configure it.
+
+Logging into Your Raspberry Pi
+1. Once the Raspberry Pi finishes booting, a login prompt will appear.
+o Default login:
+Username: pi
+Password: raspberry
+o Note: When you type the password, no characters will appear for security reasons.
+2. After logging in successfully, you will see the command line prompt:
+pi@raspberrypi~$
+3. To load the graphical user interface, type startx and press Enter.
+
+Download and Install WiringPi
+WiringPi is maintained under GIT for ease of tracking changes. If you’re unable to use GIT due to network
+issues, there is an alternative installation method.
+
+Online Install:
+1. If you don't have GIT installed, you can install it with:
+sudo apt-get install git-core
+2. Make sure your Raspberry Pi is up-to-date:
+sudo apt-get update
+sudo apt-get upgrade
+3. To obtain WiringPi using GIT:
+git clone git://git.drogon.net/wiringPi
+4. If you've already used the clone operation before, you can update it with:
+cd wiringPi
+git pull origin
+5. To build and install WiringPi, use the simplified build script:
+cd wiringPi
+./build
+The new build script will compile and install everything automatically. You may wish to inspect the script
+before running it, as it uses sudo at one point.
+
+Testing the Serial Port in Raspberry Pi
+A great way to test the serial port is by using the minicom program. If you don't have it installed, you can
+install it with:
+• sudo apt-get install minicom
+Connect your PC to the Raspberry Pi serial port using an appropriate serial adapter and wiring. Then, open
+Putty or a similar serial terminal program on your PC side, setting the connection to 9600 baud.
+Run minicom on the Raspberry Pi with the following command:
+• minicom -b 9600 -o -D /dev/ttyAMA0
+What you type into the minicom terminal on the Raspberry Pi should appear on the serial terminal of the PC,
+and vice versa.
+
+

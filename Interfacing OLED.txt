@@ -1,0 +1,64 @@
+Experiment 6
+
+Aim: To interface an OLED with Arduino/Raspberry Pi and write a program to print temperature and
+humidity readings on it.
+
+Requirements:
+1. DHT22 sensor
+2. Arduino Uno microcontroller board (ATmega328p)
+3. Jumper wires
+4. SSD1306 OLED display
+
+Procedure:
+Step 1: Open www.wokwi.com in your browser and select the "Arduino Uno" microcontroller.
+Step 2: In the simulation part, select the above-listed components by clicking the "+" symbol for each of
+the required components.
+Step 3: Using jumper wires:
+ i. Provide 5V power to the VCC pin of the DHT22 sensor.
+ ii. Connect the SDA pin of the DHT22 sensor to digital pin 3 of the Arduino Uno microcontroller board
+ (ATmega328p).
+ iii. Connect the GND pin of the DHT22 sensor to the ground.
+iv. Make connections between the OLED and Arduino:
+● Connect OLED DATA to analog pin A4.
+● Connect OLED CLK to analog pin A5.
+● Connect OLED VIN to 5V power.
+● Connect OLED GND to ground.
+Step 4: Write the following program in "sketch.ino".
+Note: Download the libraries Adafruit SSD1306 and DHT sensor library for this project.
+
+cpp
+
+#include <Adafruit_Sensor.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <DHT.h>
+#include <DHT_U.h>
+#include <Wire.h>
+Adafruit_SSD1306 display(128, 64, &Wire);
+DHT Sensor(3, DHT22);
+void setup() {
+ Serial.begin(9600);
+ Sensor.begin();
+ display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+ display.setTextColor(WHITE);
+}
+void loop() {
+ float tempr = Sensor.readTemperature();
+ float humid = Sensor.readHumidity();
+ display.setCursor(0, 10);
+ display.setTextSize(1);
+ display.print("Temperature= ");
+ display.println(tempr);
+ display.print("Humidity= ");
+ display.println(humid);
+ display.display();
+ delay(500);
+ display.clearDisplay();
+}
+
+Output:
+The temperature and humidity readings are displayed on the OLED screen by interfacing the DHT22 sensor
+with the Arduino. The OLED will show the current temperature and humidity values, which are updated
+every 500 milliseconds.
+
+

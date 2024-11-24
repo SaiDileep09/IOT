@@ -1,0 +1,44 @@
+Experiment 5
+
+Aim: To interface a motor using a relay with Arduino/Raspberry Pi and write a program to turn ON the
+motor when the push button is pressed.
+
+Requirements:
+1. Microcontroller: Arduino (e.g., Uno, Nano) or Raspberry Pi (with GPIO pins).
+2. Motor: DC motor.
+3. Relay Module: 5V relay suitable for controlling the motor.
+4. Push Button: To turn the motor on and off.
+5. Power Supply: Separate power for the motor, if needed.
+6. Resistors: For the push button (typically 10kΩ pull-down).
+7. Diode (optional): To protect from back EMF.
+8. Wires/Breadboard: For making connections.
+
+Procedure:
+To interface a motor using a relay with an Arduino or Raspberry Pi, first, connect the push button to a digital
+input pin on the microcontroller (e.g., pin 7) with a 10kΩ pull-down resistor to ensure a stable LOW state
+when the button is not pressed. Next, connect the relay module to a digital output pin (e.g., pin 9 on Arduino
+or GPIO 17 on Raspberry Pi). The relay's Common (COM) terminal should be connected to the motor’s
+ground, and the Normally Open (NO) terminal should be connected to the motor's power supply. Power the
+microcontroller and the motor separately, if required, using appropriate power sources. Write a program to
+continuously check the push button’s state; when pressed, the relay is activated to turn on the motor, and
+when released, the relay deactivates, turning the motor off.
+
+int pb = 7; // Pin for push button
+int m1 = 9; // Pin for relay control
+int m2 = 13; // Pin for motor control (for motor direction)
+void setup() {
+ pinMode(pb, INPUT); // Set push button pin as input
+ pinMode(m1, OUTPUT); // Set relay control pin as output
+ pinMode(m2, OUTPUT); // Set motor control pin as output
+}
+void loop() {
+ if (digitalRead(pb) == HIGH) {
+ digitalWrite(m1, HIGH); // Turn on the relay (motor ON)
+ digitalWrite(m2, LOW); // Set motor direction (if needed)
+ }
+ else {
+ digitalWrite(m1, LOW); // Turn off the relay (motor OFF)
+ digitalWrite(m2, HIGH); // Motor stops (if needed)
+ } delay(30); // Small delay for stability }
+
+

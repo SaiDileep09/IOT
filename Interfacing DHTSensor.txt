@@ -1,0 +1,44 @@
+Experiment 4
+
+Aim: To interface a DHT11 sensor with Arduino/Raspberry Pi and write a program to print temperature and
+humidity readings.
+
+Requirements:
+1. DHT22 sensor
+2. Arduino Uno microcontroller board (ATmega328p)
+3. Jumper wires
+
+Procedure:
+Step 1: Open www.wokwi.com in your browser and select the "Arduino Uno" microcontroller.
+Step 2: In the simulation part, select the above-listed components by clicking the "+" symbol for each of the
+required components.
+Step 3: Using jumper wires:
+ i. Provide 5V power to the VCC pin of the DHT22 sensor.
+ ii. Connect the SDA pin of the DHT22 sensor to digital pin 3 of the Arduino Uno microcontroller board
+ (ATmega328p).
+ iii. Connect the GND pin of the DHT22 sensor to the ground of the microcontroller board.
+Step 4: Write the following program in "sketch.ino".
+
+#include <Adafruit_Sensor.h>
+#include <DHT.h>
+#include <DHT_U.h>
+DHT Sensor(3, DHT22);
+void setup() {
+ Sensor.begin();
+ Serial.begin(9600);
+}
+void loop() {
+ float tempr = Sensor.readTemperature();
+ Serial.print("Temperature = ");
+ Serial.print(tempr);
+ Serial.print(", ");
+ delay(1000);
+
+ float humid = Sensor.readHumidity();
+ Serial.print("Humidity = ");
+ Serial.println(humid);
+}
+
+Output:
+Temperature and humidity readings are displayed by interfacing the DHT22 sensor with Arduino.
+

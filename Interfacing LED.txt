@@ -1,0 +1,36 @@
+Experiment 2
+
+Aim: To interface an LED/Buzzer with Arduino/Raspberry Pi and write a program to turn ON the LED for 1
+second after every 2 seconds.
+
+Requirements:
+1. Standard 5mm LED
+2. One Resistor
+3. Arduino Uno microcontroller board (ATmega328p)
+4. Jumper wires
+
+Procedure:
+Step 1: Open your browser and visit www.wokwi.com. Select the "Arduino Uno" microcontroller for the
+simulation.
+Step 2: In the simulation interface, click on the "+" symbol to add the components listed in the requirements
+above.
+Step 3: Using jumper wires, connect the Anode (A-pin) of the LED to digital pin 3 on the Arduino
+microcontroller.
+• Connect a resistor between the Anode and the Arduino pin to limit the current.
+• Connect the Cathode (C-pin) of the LED to ground (GND).
+Step 4: Write the following program in "sketch.ino".
+
+void setup() {
+ // Setup code here, to run once:
+ pinMode(3, OUTPUT); // Set digital pin 3 as an OUTPUT pin
+}
+void loop() {
+ // Main code here, to run repeatedly:
+ digitalWrite(3, HIGH); // Turn the LED ON (can also use digitalWrite(3, 1))
+ delay(1000); // Wait for 1 second
+ digitalWrite(3, LOW); // Turn the LED OFF (can also use digitalWrite(3, 0))
+ delay(1000); // Wait for 1 second
+}
+
+Output: 
+LED will turn ON for 1 second after every 2 seconds by interfacing the LED with Arduino.
