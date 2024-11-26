@@ -1,0 +1,57 @@
+Experiment 7
+
+Aim: To interface Bluetooth with Arduino/Raspberry Pi and write a program to send sensor data to a
+smartphone using Bluetooth.
+
+Procedure:
+Step 1: Open MIT App Inventor in Google Chrome.
+Step 2: Click on the "Create Apps!" button.
+Step 3: Click on "Projects" in the top menu.
+Step 4: In the dropdown menu, select "Start New Project".
+Step 5: Enter the project name: "LED_Blink" and click the OK button.
+Step 6: Select the "Label" option in the "User Interface" menu and drag it onto the mobile screen image.
+• Set Width to Fill Parent.
+• Set Text Alignment to Center.
+• Type: "This app is made for Bluetooth-based control." in the text box.
+Step 7: Select the "ListPicker" option in the "User Interface" menu and drag it onto the mobile screen
+image.
+• In the Text box, type: "Connect to Device".
+Step 8: Select the "Button" option in the "User Interface" menu and drag it onto the mobile screen image.
+• Change the text for Button 1 to "On".
+Step 9: Select the "Button" option again from the "User Interface" menu and drag it onto the mobile
+screen image.
+• Change the text for Button 2 to "Off".
+Step 10: Select the "Label" option in the "User Interface" menu and drag it onto the mobile screen image.
+• Type "Delete Everything" in the text box.
+Step 11: Select the "Clock" option in the "Sensors" menu and drag it onto the mobile screen image.
+Step 12: Click on the "Connectivity" option and select the "BluetoothClient" option, then drag it onto the
+mobile screen image.
+
+Blocks Programming:
+1. Click on the "Blocks" button.
+a)
+• Click on "ListPicker1" and select "when ListPicker1.AfterPicking do".
+• Click on "Control" and select "if then".
+• Click on "BluetoothClient1" and select "call BluetoothClient1.Connect address".
+• Click on "ListPicker1" and select "ListPicker1.Selection".
+• Click on "ListPicker1" and select "set ListPicker1.Elements to".
+• Click on "BluetoothClient1" and select "BluetoothClient1.AddressesAndNames".
+b)
+• Click on "ListPicker1" and select "when ListPicker1.BeforePicking do".
+• Click on "ListPicker1" and select "set ListPicker1.Elements to".
+• Click on "BluetoothClient1" and select "BluetoothClient1.AddressesAndNames".
+c)
+• Click on "Button1" and select "when Button1.Click do".
+• Click on "BluetoothClient1" and select "call BluetoothClient1.SendText text".
+• Click on "Text" and select "textString". Enter "1" into the text box.
+d)
+• Repeat the above steps for "Button2", but change the text to "0".
+e)
+• Click on "Clock1" and select "when Clock1.Timer do".
+• Click on "Control" and select "if then".
+• Click on "BluetoothClient1" and select "BluetoothClient1.IsConnected".
+• Click on "Label2" and select "set Label2.Text to".
+• Click on "BluetoothClient1" and select "call BluetoothClient1.ReceiveText numberOfBytes"
+and "call BluetoothClient1.BytesAvailableToReceive".
+
+
